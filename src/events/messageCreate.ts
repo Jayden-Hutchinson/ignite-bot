@@ -1,6 +1,6 @@
 import { Events, Message } from "discord.js";
 import { Event } from "./event.js";
-import commandMap from "../commands/commands.js";
+import { commandMap } from "../commands/commandMap.js";
 
 export default {
   name: Events.MessageCreate,
@@ -19,6 +19,11 @@ export default {
     const command = commandMap.get(message.content);
     if (!command) {
       console.log(`Command ${message.content} not available`);
+      const errorMessage = `${message.content} is not a command.
+
+**!help** for a list of commands!`;
+
+      message.reply(errorMessage);
       return;
     }
 

@@ -1,11 +1,24 @@
+import { Command } from "./command.js";
 import leaderboardCommand from "./leaderboardCommand.js";
+import pingCommand from "./pingCommand.js";
+import socialsCommand from "./socialsCommand.js";
 
-const commands = [leaderboardCommand];
+const commandPrefix = "!";
 
-const commandMap = new Map();
+export const commands: Command[] = [
+  socialsCommand,
+  leaderboardCommand,
+  pingCommand,
+];
 
-commands.forEach((command) => {
-  commandMap.set(command.name, command);
-});
+export function addPrefix(command: Command) {
+  return `${commandPrefix}${command.name}`;
+}
 
-export default commandMap;
+export function displayCommands() {
+  return commands
+    .map((command) => {
+      return `**${command.name}** - ${command.description}`;
+    })
+    .join("\n");
+}
