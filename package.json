@@ -1,0 +1,24 @@
+{
+  "name": "ignite-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "keywords": [],
+  "author": "Jayden Hutchinson",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}
