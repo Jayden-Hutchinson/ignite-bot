@@ -3,24 +3,24 @@ import { Command } from "./command.js";
 
 const socials = [
   {
-    name: "Website",
-    url: "https://ignitefitness.ca",
+    name: ":globe_with_meridians: Website",
+    value: `[ignitefitness.ca](https://ignitefitness.ca)`,
   },
   {
-    name: "Facebook",
-    url: "https://www.facebook.com/miguel.hombrebueno",
+    name: ":blue_book: Facebook",
+    value: `[miguel.hombrebueno](https://www.facebook.com/miguel.hombrebueno)`,
   },
   {
-    name: "Instagram",
-    url: "https://www.instagram.com/miguelhombre.ignitefit",
+    name: ":camera: Instagram",
+    value: `[@miguelhombre.ignitefit](https://www.instagram.com/miguelhombre.ignitefit)`,
   },
   {
-    name: "Threads",
-    url: "https://www.threads.com/@miguelhombre.ignitefit?xmt=AQG0M1PkN-ZysSGVVc5UL0dCrVuN3pPmu253jbHOELoGZGc",
+    name: ":thread: Threads",
+    value: `[@miguelhombre.ignitefit](https://www.threads.com/@miguelhombre.ignitefit?xmt=AQG0M1PkN-ZysSGVVc5UL0dCrVuN3pPmu253jbHOELoGZGc)`,
   },
   {
-    name: "TikTok",
-    url: "https://www.tiktok.com/@miguelhombre.ignitefit",
+    name: ":musical_note: TikTok",
+    value: `[@miguelhombre.ignitefit](https://www.tiktok.com/@miguelhombre.ignitefit)`,
   },
 ];
 
@@ -28,34 +28,14 @@ export default {
   name: "socials",
   description: "Display a list of all ignite fitness social media links",
   execute: async function (message: Message): Promise<void> {
-    //     const socialsMessage = `
-    // ${socials
-    //   .map((social) => {
-    //     return `
-    // **${social.name}**
-    // [link](${social.url})`;
-    //   })
-    //   .join("\n")}`;
-
-    //     await message.reply({
-    //       content: socialsMessage,
-    //       flags: MessageFlags.SuppressEmbeds,
-    //     });
-
     const embed = new EmbedBuilder()
-      .setTitle("Ignite Socials")
-      .setDescription("Here are the Ignite Fitness Socials:")
-      .addFields({
-        name: "",
-        value: [
-          socials
-            .map((social) => {
-              return `[**${social.name}**](${social.url})`;
-            })
-            .join("\n"),
-        ].join("\n"),
-      });
-
+      .setTitle("Socials")
+      .setDescription("Follow us on social media!")
+      .addFields(
+        socials.map((social) => {
+          return social;
+        }),
+      );
     await message.reply({
       embeds: [embed],
     });
