@@ -17,6 +17,10 @@ export default {
     }
 
     const command = commandMap.get(message.content);
+    if (!command) {
+      console.log(`Command ${message.content} not available`);
+      return;
+    }
 
     command.execute(message);
   },
