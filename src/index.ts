@@ -20,4 +20,6 @@ const eventBinder = new EventBinder(client);
 
 eventBinder.register();
 
+
+
 client.login(BOT_TOKEN);

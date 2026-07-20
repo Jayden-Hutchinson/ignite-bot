@@ -1,4 +1,4 @@
-import { EmbedBuilder, Message, MessageFlags } from "discord.js";
+import { EmbedBuilder, Message } from "discord.js";
 import { Command } from "./command.js";
 
 const socials = [
@@ -31,11 +31,8 @@ export default {
     const embed = new EmbedBuilder()
       .setTitle("Socials")
       .setDescription("Follow us on social media!")
-      .addFields(
-        socials.map((social) => {
-          return social;
-        }),
-      );
+      .addFields(socials);
+
     await message.reply({
       embeds: [embed],
     });
