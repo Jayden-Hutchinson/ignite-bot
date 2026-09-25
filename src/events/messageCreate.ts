@@ -1,6 +1,9 @@
 import { Events, Message } from "discord.js";
-import { Event } from "./event.js";
-import { commandMap } from "../commands/commandMap.js";
+import { Event } from "./Event.js";
+import { CommandHandler } from "../handlers/CommandHandler.js";
+import { commands } from "../commands/commands.js";
+
+const handlers = [new CommandHandler(commands)];
 
 export default {
   name: Events.MessageCreate,
@@ -11,22 +14,10 @@ export default {
       return;
     }
 
-    const guildId = message.guildId;
-    if (!guildId) {
-      return;
+    for (const handler of handlers) {
+      if (await handler.handle(message)) {
+        break;
+      }
     }
-
-    const command = commandMap.get(message.content);
-    if (!command) {
-      console.log(`Command ${message.content} not available`);
-      const errorMessage = `${message.content} is not a command.
-
-**!help** for a list of commands!`;
-
-      message.reply(errorMessage);
-      return;
-    }
-
-    command.execute(message);
   },
 } satisfies Event<Events.MessageCreate>;

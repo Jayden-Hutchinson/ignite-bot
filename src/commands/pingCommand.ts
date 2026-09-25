@@ -1,9 +1,10 @@
 import { EmbedBuilder, Message } from "discord.js";
-import { Command } from "./command.js";
+import { Command, CommandType } from "./Command.js";
 
 export default {
   name: "ping",
   description: "Ping the discord bot for connection info",
+  type: CommandType.General,
   execute: async function (message: Message): Promise<void> {
     const start = Date.now();
 

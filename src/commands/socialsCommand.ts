@@ -1,5 +1,5 @@
 import { EmbedBuilder, Message } from "discord.js";
-import { Command } from "./command.js";
+import { Command, CommandType } from "./Command.js";
 
 const socials = [
   {
@@ -27,6 +27,7 @@ const socials = [
 export default {
   name: "socials",
   description: "Display a list of all ignite fitness social media links",
+  type: CommandType.Community,
   execute: async function (message: Message): Promise<void> {
     const embed = new EmbedBuilder()
       .setTitle("Socials")
